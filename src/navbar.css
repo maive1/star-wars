@@ -1,0 +1,61 @@
+.navbar {
+    
+    background-image: url('https://cloud.addictivetips.com/wp-content/uploads/2017/12/Death-Star.jpg');
+}
+.logoimage {
+    width: 220px;
+}
+.items-starwars {
+    background-color: black;
+    font-size: 16px;
+    font-weight: 500;    
+    border-top: 1px solid grey;
+}
+.items-starwars li {
+    border-right: 1px solid grey;    
+}
+.items-starwars .vehicles {
+    border-left: 1px solid grey; 
+}
+
+
+.icons {
+    color: grey;
+}
+
+.page-footer {
+    
+    background-image: url('https://cloud.addictivetips.com/wp-content/uploads/2017/12/Death-Star.jpg');
+}
+.page-footer h6 {
+    color: blanchedalmond;
+}
+.user-options h6 {
+    font-weight: 900;
+    color: whitesmoke;
+}
+.user-options > .user {
+    color:grey;
+    font-weight: bold;
+}
+
+.footer-information {
+    color: grey;
+}
+.social-icons {
+    font-size: 25px;
+    color: aliceblue;    
+}
+.social-icons a:hover{
+    color: ivory;
+}
+.icon-kids::before{
+    content: "";
+    position: absolute;
+    border-top: 2px solid #343434;    
+    width: 2px;
+    height: 27px;
+    background: #343434;
+    right: 220px;
+    top: 14px;
+}
