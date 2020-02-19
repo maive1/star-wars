@@ -15,7 +15,15 @@ code {
 
 .card-vehicles {
   width: 280px;
-  height: 700px;
+  height: 800px;
+}
+.card-planets {
+  width: 280px;
+  height: 650px;
+}
+
+h6 {
+  font-weight: bold ;
 }
 
 .title-favorites h3 {

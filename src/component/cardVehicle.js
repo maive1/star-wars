@@ -1,42 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-const Card = props => {
+export default function CardVehicle(props) {
+	const {actions} = useContext(Context)
+
 	return (
-		<div className="card card-vehicles mb-5">
+		<div className="card card-vehicles p-3 mb-5" >
 			<img
-				src="https://via.placeholder.com/200"				
-				className="card-img-top"
-				alt="vehicles starwars"
+			src={props.imageUrl}	
+			className="card-img-top"
+			alt={imageName}
 			/>
-			<div className="card-body">
+			<div className="card-body row">
 				<h5 className="card-title">{props.name}</h5>				
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item model">{props.model}</li>
-                    <li class="list-group-item pilots">{props.pilots}</li>
-                    <li class="list-group-item films">{props.films}</li>
-                    <li class="list-group-item manufacturer">{props.manufacturer}</li>
-                    <li class="list-group-item cost_in_credits">{props.cost_in_credits}</li>
-                    <li class="list-group-item length">{props.length}</li>
-                </ul>
-				<a href={props.favoriteLink} className="btn btn-primary">
-					{props.favorite}
-				</a>
+				<ul className="list-group list-group-flush">
+					<li className="list-group-item model"><h6>Model:</h6>{props.model}</li>
+					
+					<li className="list-group-item films"><h6>Consumables:</h6> {props.consumables}</li>
+					<li className="list-group-item manufacturer"><h6>Manufacturer:</h6> {props.manufacturer}</li>
+					<li className="list-group-item cost_in_credits"><h6>Cost:</h6> {props.cost_in_credits}</li>
+					<li className="list-group-item length"><h6>Lenght:</h6> {props.length}</li>
+				</ul>
+				<span className=" d-flex align-content-end flex-wrap">
+					<Link  className="btn btn-primary bg-warning " onClick={(e)=>actions.favoritesItem(e, item.name )} to={props.route}>
+					{props.textLink}
+					</Link>
+				</span>
 			</div>
 		</div>
 	);
 };
 
-Card.propTypes = {
+CardVehicle.propTypes = {
 	imageUrl: PropTypes.string.isRequired,
 	imageName: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
-    pilots: PropTypes.array.isRequired,
-    films: PropTypes.array.isRequired,
-    manufacturer: PropTypes.string.isRequired,
-    length: PropTypes.string.isRequired,
-	favoriteLink: PropTypes.string.isRequired,
-	favorite: PropTypes.string.isRequired
+    consumables: PropTypes.string.isRequired,
+    manufacturer: PropTypes.string.isRequired,    
+	cost_in_credits: PropTypes.string.isRequired,
+	length: PropTypes.string.isRequired,
+	textLink: PropTypes.string.isRequired,
+	route: PropTypes.string.isRequired
 };
-export default Card;

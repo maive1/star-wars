@@ -8,6 +8,7 @@ import Vehicles from "./views/vehicles";
 import Planets from "./views/planets";
 import Character from "./views/character";
 import Home from "./views/home";
+import Favorites from "./views/favorites"
 
 
 //create your first component
@@ -22,6 +23,7 @@ export const Layout = () => {
 					<Route path="/vehicles" component={Vehicles}/>
 					<Route path="/planets" component={Planets}/>
 					<Route path="/character" component={Character}/>
+					<Route path="/favorites" component={Favorites}/>
 					<Route render={() => <h1>Not found!</h1>} />
 					</Switch>
 					

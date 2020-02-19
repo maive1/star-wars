@@ -4,7 +4,8 @@ const getState = ({getStore, getActions,setStore }) => {
 			people: [],
 			vehicles:[],
 			planets:[],
-			favorites: []			
+			favorites: [],
+			favoritesPlanets:[],			
 		},
 
 		actions: {
@@ -21,8 +22,7 @@ const getState = ({getStore, getActions,setStore }) => {
 				fetch('https://swapi.co/api/planets/')
 				.then(res=>res.json())
 				.then(data=>{setStore({planets: data.results})
-				console.log(store.planets)
-			})
+				console.log(store.planets)})
 				.catch(error=>console.log(error))
 			},
 
@@ -31,27 +31,38 @@ const getState = ({getStore, getActions,setStore }) => {
 				fetch('https://swapi.co/api/vehicles/')
 				.then(res=>res.json())
 				.then(data=>{setStore({vehicles: data.results})
-				console.log(store.vehicles)
-			})
+				console.log(store.vehicles)})
 				.catch(error=>console.log(error))				
 			},
 			
-			favoritesItem: (e, name)=>{
-				const {vehicles, favorites} = getStore();				
-				let favVehicles = vehicles.find((elem)=>{
-					return elem.name === name
-				});
-							
-				if(favorites.length === 0){
-					setStore({favorites: favorites.concat(favVehicles)});					
+			favoritesItem: (e, name) => {
+				e.preventDefault();
+				const store = getStore();
+				let favVehicles = store.vehicles.find((elem)=>{return elem.name === name});
+				if(store.favorites.length === 0){
+					setStore({favorites: store.favorites.concat(favVehicles)});					
 				} else {
-					let x = favorites.find(item=> item.name === favVehicles.name);
+					let x = store.favorites.find(item=> item.name === favVehicles.name);
 					if(x === undefined) {
-						setStore({favorites: favorites.concat(favVehicles)});
+						setStore({favorites: store.favorites.concat(favVehicles)});
+					}
+				};
+			},
+			
+			favoritesItemTwo: (e,name)=>{
+				e.preventDefault();
+				const store = getStore();
+				let favPlanets = store.planets.find((elem)=>{return elem.name === name});
+				if(store.favoritesPlanets.length === 0){
+					setStore({favoritesPlanets: store.favoritesPlanets.concat(favPlanets)});					
+				} else {
+					let x = store.favoritesPlanets.find(item=> item.name === favPlanets.name);
+					if(x === undefined) {
+						setStore({favoritesPlanets: store.favoritesPlanets.concat(favPlanets)});
 					}
 				};
 			},		
-			
+					
 
 		}
 	};
