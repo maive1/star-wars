@@ -55,10 +55,10 @@ const Navbar = () => {
 								</a>
 							</li>
 						</ul>
-					</div>
+					</div>	
 					<div className="logo col-4 text-center">
-						<Link className="navbar-brand" to="/home">
-							<img className="logoimage" src={require('./star-wars-yellow.png')} alt="star wars logo" />
+						<Link className="navbar-brand" to="/vehicles">
+							<img className="logoimage" src={require('../img/starwarslogo.png')} alt="logoimage" />
 						</Link>
 					</div>
 					<div className="search col-4 mt-0 ">

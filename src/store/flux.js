@@ -1,11 +1,12 @@
-const getState = ({getStore, getActions,setStore }) => {
+const getState = ({getStore, setStore }) => {
 	return {
 		store: {
 			people: [],
 			vehicles:[],
 			planets:[],
 			favorites: [],
-			favoritesPlanets:[],			
+			favoritesPlanets:[],
+			favoritesCharacter: [],			
 		},
 
 		actions: {
@@ -48,8 +49,22 @@ const getState = ({getStore, getActions,setStore }) => {
 					}
 				};
 			},
+
+			favoritesCharacter: (e, name) => {
+				e.preventDefault();
+				const store = getStore();
+				let favCharacter = store.people.find((elem)=>{return elem.name === name});
+				if(store.favoritesCharacter.length === 0){
+					setStore({favoritesCharacter: store.favoritesCharacter.concat(favCharacter)});					
+				} else {
+					let x = store.favoritesCharacter.find(item=> item.name === favCharacter.name);
+					if(x === undefined) {
+						setStore({favoritesCharacter: store.favoritesCharacter.concat(favCharacter)});
+					}
+				};
+			},			
 			
-			favoritesItemTwo: (e,name)=>{
+			favoritesPlanets: (e,name)=>{
 				e.preventDefault();
 				const store = getStore();
 				let favPlanets = store.planets.find((elem)=>{return elem.name === name});
@@ -62,8 +77,6 @@ const getState = ({getStore, getActions,setStore }) => {
 					}
 				};
 			},		
-					
-
 		}
 	};
 };

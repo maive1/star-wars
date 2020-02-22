@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import CardCharacter from "../component/CardCharacter"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 
@@ -11,31 +11,24 @@ const Character = () => {
         <div className="card-deck">
             {store.people.map((item,i)=>{
                 return (
-                    <div className="col-3">
-                        <div className="card my-2" key={i}>
-                            <img
-                            src="https://media.timeout.com/images/103670273/750/422/image.jpg"	
-                            className="card-img-top"
-                            alt="vehicles starwars"
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">{item.name}</h5>				
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item model">Birth Year: {item.birth_year}</li>                             
-                                    <li class="list-group-item films">Height: {item.height}</li>
-                                    <li class="list-group-item manufacturer">Mass: {item.mass}</li>                                
-                                </ul>
-                                <Link to="/favorite" className="btn btn-primary">
-                                <FontAwesomeIcon icon={faHeart} />
-                                </Link>
-                            </div>
-                        </div>
+                    <div className="col-3" key={i}>
+                        <CardCharacter
+                            imageUrl="https://media.timeout.com/images/103670273/750/422/image.jpg"
+                            imageName="starwars character"
+                            name={item.name}
+                            birth_year={item.birth_year}
+                            height={item.height}
+                            mass={item.mass}
+                            event={(e)=>actions.favoritesCharacter(e, item.name )}
+                            route="/favorites"
+                            iconLink={<FontAwesomeIcon icon={faHeart}/>}
+                        />                      
                     </div>
                 );
             })}
         </div>
     );    
     
-}
+};
 
-export default Character
+export default Character;

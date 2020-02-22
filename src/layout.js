@@ -2,31 +2,26 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import injectContext from "./store/appContext";
-import Navbar from "./component/navbar";
-import Footer from "./component/footer";
-import Vehicles from "./views/vehicles";
-import Planets from "./views/planets";
-import Character from "./views/character";
-import Home from "./views/home";
-import Favorites from "./views/favorites"
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+import Vehicles from "./views/Vehicles";
+import Planets from "./views/Planets";
+import Character from "./views/Character"
+import Favorites from "./views/Favorites"
 
-
-//create your first component
 export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter>
-					<Navbar/>
-					
+					<Navbar/>					
 					<Switch>
-					<Route path="/home" component={Home}/>
-					<Route path="/vehicles" component={Vehicles}/>
-					<Route path="/planets" component={Planets}/>
-					<Route path="/character" component={Character}/>
-					<Route path="/favorites" component={Favorites}/>
-					<Route render={() => <h1>Not found!</h1>} />
-					</Switch>
-					
+						<Route exact path="/" component={Vehicles}/>
+						<Route exact path="/vehicles" component={Vehicles}/>
+						<Route exact path="/planets" component={Planets}/>
+						<Route exact path="/character" component={Character}/>
+						<Route exact path="/favorites" component={Favorites}/>
+						<Route render={() => <h1>Not found!</h1>} />
+					</Switch>					
 					<Footer/>					
 			</BrowserRouter>
 		</div>
